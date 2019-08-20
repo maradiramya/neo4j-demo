@@ -22,22 +22,22 @@ public class UserController {
     }
 
     @GetMapping(value = "/users")
-    public Collection<User> getAllMovieCritics() {
+    public Collection<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
     @GetMapping(value = "/movies")
-    public Iterable<Movie> getAllMovie() {
+    public Iterable<Movie> getAllMovies() {
         return userService.getAllMovies();
     }
 
     @PostMapping(value = "/user")
-    public User saveMovieCritic(@RequestBody User user) {
+    public User saveUser(@RequestBody User user) {
         return userService.saveUser(user);
     }
 
     @PutMapping(value = "/user")
-    public User updateMovieCritic(@RequestBody User user) {
+    public User updateUser(@RequestBody User user) {
         return userService.updateUser(user);
     }
 
@@ -53,12 +53,12 @@ public class UserController {
     }
 
     @DeleteMapping(value = "/user")
-    public User deleteCritic(@RequestBody User user) {
+    public User deleteUserById(@RequestBody User user) {
         return userService.deleteUserById(user);
     }
 
     @DeleteMapping(value = "/movie")
-    public Movie deleteMovie(@RequestBody Movie movie) {
+    public Movie deleteMovieById(@RequestBody Movie movie) {
         return userService.deleteMovieById(movie);
     }
 
@@ -66,6 +66,12 @@ public class UserController {
     public User setRelation(@RequestParam long userId, long movieId, int rating) {
         return userService.setRelation(userId, movieId, rating);
     }
-
-
+    @GetMapping("/user/{id}")
+    public User getUserById(@PathVariable User user){
+        return userService.getUserById(user);
+    }
+    @GetMapping("/movie/{id}")
+    public Movie getMovieById(@PathVariable Movie movie){
+        return userService.getMovieById(movie);
+    }
 }
